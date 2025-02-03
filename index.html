@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fiber Permata Kasih</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Custom CSS for Password Modal -->
+<style>
+    /* Modal background */
+    #passwordModal {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    /* Modal content */
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 300px;
+    }
+
+    .modal-header {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .modal-body {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .modal-input {
+        margin-top: 10px;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .modal-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .modal-button:hover {
+        background-color: #0056b3;
+    }
+
+    .modal-button i {
+        font-size: 18px; /* Adjust the icon size */
+    }
+</style>
+
+<!-- Password Protection Script -->
+<script>
+    window.onload = function() {
+        // Cek jika password sudah dimasukkan sebelumnya
+        const isPasswordEntered = localStorage.getItem('isPasswordEntered');
+
+        // Jika password sudah dimasukkan, tidak tampilkan modal lagi
+        if (isPasswordEntered) {
+            return;
+        }
+
+        // Create the modal HTML structure
+        var modal = document.createElement('div');
+        modal.id = 'passwordModal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Masukkan Password</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Untuk mengakses situs ini, masukkan password yang benar:</p>
+                    <p>Permata Kasih</p>
+                    <input type="password" id="passwordInput" class="modal-input" placeholder="Masukkan Password" />
+                    <button id="submitPassword" class="modal-button"><i class="fa fa-paper-plane"></i> Masukkan</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Add event listener for submit button
+        document.getElementById('submitPassword').onclick = function() {
+            var enteredPassword = document.getElementById('passwordInput').value;
+
+            // Cek apakah password benar
+            if (enteredPassword === 'Permata Kasih') {
+                modal.style.display = 'none'; // Close the modal if the password is correct
+                localStorage.setItem('isPasswordEntered', 'true'); // Menyimpan status sudah memasukkan password
+                alert('Akses diterima! Anda dapat mengakses situs tanpa terkunci lagi.');
+            } else {
+                alert('Password salah! Akses ditolak.');
+                window.location.href = "https://www.google.com"; // Redirect if password is incorrect
+            }
+        };
+    };
+</script>
+
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+            <a href="index.html" class="navbar-brand">
+                <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Fiber Permata Kasih</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="index.html" class="nav-item nav-link active">Beranda</a>
+                    <a href="about.html" class="nav-item nav-link">Tentang</a>
+                    <a href="classes.html" class="nav-item nav-link">Gallery</a>
+                    <a href="team.html" class="nav-item nav-link">Profil Pengurus</a>
+                    <a href="contact.html" class="nav-item nav-link">Hubungi Kami</a>             
+                </div>
+                <!-- Tombol DONASI -->
+<a href="donasi.html" class="btn-donasi-premium">
+    DONASI <i class="fa fa-arrow-right"></i>
+</a>
+
+<!-- CSS Tambahan -->
+<style>
+    .btn-donasi-premium {
+        background: linear-gradient(135deg, #ff7eb3, #ff758c);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(255, 117, 140, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-donasi-premium:hover {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        transform: scale(1.05);
+        box-shadow: 0px 6px 15px rgba(255, 117, 140, 0.4);
+    }
+
+    .btn-donasi-premium i {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .btn-donasi-premium:hover i {
+        transform: translateX(5px);
+    }
+</style>
+
+        </nav>
+        <!-- Navbar End -->
+
+
+        <!-- Carousel Start -->
+        <div class="container-fluid p-0 mb-5">
+            <div class="owl-carousel header-carousel position-relative">
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h1 class="display-2 text-white animated slideInDown mb-4">Panti Asuhan Fiber Permata Kasih</h1>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Kami berharap Anda dapat merasakan kasih sayang dan kehangatan yang kami berikan kepada anak-anak yang kami rawat.
+                                        .</p>
+ <!-- Tombol VIDEO dan DONATUR KAMI -->
+<div class="btn-container">
+    <a href="video.html" class="btn-video">
+        <i class="fa fa-play-circle"></i> VIDEO
+    </a>
+    <a href="dons&dont.html" class="btn-donatur">
+        <i class="fa fa-users"></i> DONATUR KAMI
+    </a>
+</div>
+
+<!-- CSS Tambahan -->
+<style>
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Jarak antar tombol */
+        align-items: center;
+    }
+
+    .btn-video, .btn-donatur {
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px rgba(0, 114, 255, 0.3);
+    }
+
+    .btn-video:hover, .btn-donatur:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #0072ff, #00c6ff);
+        box-shadow: 0px 6px 15px rgba(0, 114, 255, 0.4);
+    }
+
+    .btn-video i, .btn-donatur i {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .btn-video:hover i, .btn-donatur:hover i {
+        transform: translateX(8px);
+    }
+
+    /* Animasi masuk */
+    .btn-video {
+        animation: slideInLeft 0.6s ease-out;
+    }
+    .btn-donatur {
+        animation: slideInRight 0.6s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h1 class="display-2 text-white animated slideInDown mb-4">Panti Asuhan Fiber Permata Kasih</h1>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Kami adalah sebuah lembaga yang berkomitmen untuk memberikan kasih sayang, pendidikan, dan perlindungan kepada anak-anak yang membutuhkan. Kami berharap Anda dapat bergabung dengan kami dalam misi kami untuk membantu anak-anak yang membutuhkan.
+                                    </p>
+<!-- Tombol VIDEO dan DONATUR KAMI -->
+<div class="btn-container">
+    <a href="video.html" class="btn-video">
+        <i class="fa fa-play-circle"></i> VIDEO
+    </a>
+    <a href="dons&dont.html" class="btn-donatur">
+        <i class="fa fa-users"></i> DONATUR KAMI
+    </a>
+</div>
+
+<!-- CSS Tambahan -->
+<style>
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Jarak antar tombol */
+        align-items: center;
+    }
+
+    .btn-video, .btn-donatur {
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px rgba(0, 114, 255, 0.3);
+    }
+
+    .btn-video:hover, .btn-donatur:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #0072ff, #00c6ff);
+        box-shadow: 0px 6px 15px rgba(0, 114, 255, 0.4);
+    }
+
+    .btn-video i, .btn-donatur i {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .btn-video:hover i, .btn-donatur:hover i {
+        transform: translateX(8px);
+    }
+
+    /* Animasi masuk */
+    .btn-video {
+        animation: slideInLeft 0.6s ease-out;
+    }
+    .btn-donatur {
+        animation: slideInRight 0.6s ease-out;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+
+        <!-- Facilities Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Fasilitas Panti Asuhan</h1>
+                    <p>Panti Asuhan Fiber Permata Kasih menyediakan fasilitas yang lengkap dan nyaman untuk anak-anak yang tinggal di sini, termasuk asrama yang bersih dan nyaman, ruang kelas dan pendidikan, fasilitas olahraga dan rekreasi, klinik kesehatan dan perawatan, dapur dan ruang makan, ruang ibadah dan spiritual, perpustakaan dan ruang belajar, serta fasilitas hiburan dan kreativitas.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="facility-item">
+                            <div class="facility-icon bg-primary">
+                                <span class="bg-primary"></span>
+                                <i class="fa fa-bus-alt fa-3x text-primary"></i>
+                                <span class="bg-primary"></span>
+                            </div>
+                            <div class="facility-text bg-primary">
+                                <h3 class="text-primary mb-3">BUS</h3>
+                                <p class="mb-0">"Anak-anak menikmati fasilitas transportasi yang aman dan nyaman, berkat bantuan dari pemerintah yang menyediakan bus khusus untuk mereka."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="facility-item">
+                            <div class="facility-icon bg-success">
+                                <span class="bg-success"></span>
+                                <i class="fa fa-futbol fa-3x text-success"></i>
+                                <span class="bg-success"></span>
+                            </div>
+                            <div class="facility-text bg-success">
+                                <h3 class="text-success mb-3">Taman Bermain</h3>
+                                <p class="mb-0">"Anak-anak menikmati waktu bermain yang menyenangkan di taman bermain yang terletak di halaman depan kontrakan."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="facility-item">
+                            <div class="facility-icon bg-warning">
+                                <span class="bg-warning"></span>
+                                <i class="fa fa-home fa-3x text-warning"></i>
+                                <span class="bg-warning"></span>
+                            </div>
+                            <div class="facility-text bg-warning">
+                                <h3 class="text-warning mb-3">Rumah kontrakan</h3>
+                                <p class="mb-0">"Panti Asuhan Fiber Permata Kasih berlokasi di rumah kontrakan yang nyaman dan aman dan memberikan lingkungan yang hangat dan menyenangkan bagi anak-anak yang tinggal di sini."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="facility-item">
+                            <div class="facility-icon bg-info">
+                                <span class="bg-info"></span>
+                                <i class="fa fa-chalkboard-teacher fa-3x text-info"></i>
+                                <span class="bg-info"></span>
+                            </div>
+                            <div class="facility-text bg-info">
+                                <h3 class="text-info mb-3">belajar Positif</h3>
+                                <p class="mb-0">"Panti Asuhan Fiber Permata Kasih berkomitmen untuk menciptakan lingkungan belajar yang positif dan mendukung, sehingga anak-anak dapat tumbuh dan berkembang dengan optimal."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Facilities End -->
+
+
+        <!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-4 text-primary">Tentang Panti Asuhan Fiber Permata Kasih</h1>
+                <p class="text-muted">
+                    Panti Asuhan Fiber Permata Kasih didirikan pada tahun <b>2023</b> dengan tujuan memberikan tempat tinggal, pendidikan, dan kasih sayang bagi anak-anak yang membutuhkan. Saat ini, kami merawat <b>18 anak</b> yang penuh harapan untuk masa depan yang lebih baik.
+                </p>
+                <h4 class="text-primary mt-4">Visi & Misi</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-hand-holding-heart text-primary"></i> Menyediakan lingkungan yang aman dan penuh kasih.</li>
+                    <li class="list-group-item"><i class="fas fa-book text-primary"></i> Memberikan pendidikan berkualitas bagi anak-anak.</li>
+                    <li class="list-group-item"><i class="fas fa-heart text-primary"></i> Membantu anak-anak tumbuh dengan nilai-nilai moral dan sosial yang kuat.</li>
+                </ul>
+
+                <h4 class="text-primary mt-4">Kebutuhan Harian</h4>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="bubble-btn"><i class="fas fa-utensils"></i> Makanan Sehat</button>
+                    <button class="bubble-btn"><i class="fas fa-tshirt"></i> Pakaian</button>
+                    <button class="bubble-btn"><i class="fas fa-book-open"></i> Buku & Alat Tulis</button>
+                    <button class="bubble-btn"><i class="fas fa-medkit"></i> Obat-obatan</button>
+                    <button class="bubble-btn"><i class="fas fa-bed"></i> Tempat Tidur</button>
+                </div>
+
+                <div class="row g-4 align-items-center mt-4">
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary rounded-pill py-3 px-5 shadow-lg" href="classes.html">Pelajari Lebih Lanjut</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle shadow-sm" src="img/team-1.jpg" alt="Ignatius Waruwu" style="width: 50px; height: 50px;">
+                            <div class="ms-3">
+                                <h6 class="text-primary mb-1">Ignatius Waruwu</h6>
+                                <small>Pendiri Panti Asuhan Fiber Permata Kasih</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian Gambar -->
+            <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
+                <div class="row position-relative">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid w-75 rounded shadow-lg" src="img/about-1.jpg" alt="Kegiatan Panti">
+                    </div>
+                    <div class="col-6 text-start" style="margin-top: -120px;">
+                        <img class="img-fluid w-100 rounded shadow-lg" src="img/about-2.jpg" alt="Anak-anak di Panti">
+                    </div>
+                    <div class="col-6 text-end" style="margin-top: -120px;">
+                        <img class="img-fluid w-100 rounded shadow-lg" src="img/about-3.jpg" alt="Kegiatan Sosial">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- CSS Tambahan -->
+<style>
+    .bubble-btn {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .bubble-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .bubble-btn i {
+        font-size: 20px;
+    }
+</style>
+
+
+       <!-- Call To Action Start --> 
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded shadow-lg overflow-hidden">
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded" src="img/call-to-action.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="h-100 d-flex flex-column justify-content-center p-5">
+                        <h1 class="mb-4 text-primary">Jadilah Donatur Kami</h1>
+                        <p class="mb-4 text-muted">
+                            Setiap donasi yang Anda berikan akan membantu kami memberikan kasih sayang, pendidikan, dan perlindungan kepada anak-anak yang membutuhkan.
+                            Jadilah bagian dari perubahan yang lebih baik hari ini.
+                        </p>
+                        <a class="btn-donasi" href="donasi.html">
+                            <span>Donasi Sekarang</span> <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call To Action End -->
+
+<!-- CSS Tambahan -->
+<style>
+    .btn-donasi {
+        background: linear-gradient(135deg, #ff7eb3, #ff758c);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(255, 117, 140, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-donasi:hover {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        transform: scale(1.05);
+        box-shadow: 0px 6px 15px rgba(255, 117, 140, 0.4);
+    }
+
+    .btn-donasi i {
+        font-size: 22px;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+</style>
+
+
+
+        <!-- Classes Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Gallery Anak-anak</h1>
+                    <p>Galeri ini menampilkan beberapa momen-momen bahagia dan menyenangkan yang dialami oleh anak-anak di Panti Asuhan Fiber Permata Kasih. Kami berharap Anda dapat menikmati foto-foto ini dan merasakan kegembiraan dan kebahagiaan yang kami rasakan setiap hari.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Luis</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-1.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Luis Ignasius Zai</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>9 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>25 November 2015</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas: 4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Sari</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-2.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Reni Purnama Sari Lawolo</h6>
+                                            <small>Volly</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">TK</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>4 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>2021</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas:TK</h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-3.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Selamat</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-3.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Selamata Fati Hulu</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>11</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir</h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Capacity:</h6>
+                                            <small>30 Kids</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-4.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Language & Speaking</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <small>Teacher</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Age:</h6>
+                                            <small>3-5 Years</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Time:</h6>
+                                            <small>9-10 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Capacity:</h6>
+                                            <small>30 Kids</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-5.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Religion & History</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <small>Teacher</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Age:</h6>
+                                            <small>3-5 Years</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Time:</h6>
+                                            <small>9-10 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Capacity:</h6>
+                                            <small>30 Kids</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">General Knowledge</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <small>Teacher</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Age:</h6>
+                                            <small>3-5 Years</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Time:</h6>
+                                            <small>9-10 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Capacity:</h6>
+                                            <small>30 Kids</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-7.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">General Knowledge</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <small>Teacher</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Age:</h6>
+                                            <small>3-5 Years</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Time:</h6>
+                                            <small>9-10 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Capacity:</h6>
+                                            <small>30 Kids</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-8.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">General Knowledge</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <small>Teacher</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Age:</h6>
+                                            <small>3-5 Years</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Time:</h6>
+                                            <small>9-10 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Capacity:</h6>
+                                            <small>30 Kids</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="img/classes-9.jpg" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Jheven</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle flex-shrink-0" src="img/classes-9.jpg" alt="" style="width: 45px; height: 45px;">
+                                        <div class="ms-3">
+                                            <h6 class="text-primary mb-1">Jelin Febrian Lawolo</h6>
+                                            <small>Futsal</small>
+                                        </div>
+                                    </div>
+                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">SD</span>
+                                </div>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Umur:</h6>
+                                            <small>12 Tahun</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Tanggal Lahir:</h6>
+                                            <small>08 juni 2013</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Kelas :4 </h6>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        <!-- Classes End -->
+
+
+        <!-- Appointment Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded shadow-lg overflow-hidden">
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="h-100 d-flex flex-column justify-content-center p-5">
+                        <h1 class="mb-4 text-primary">Jadwalkan Kunjungan Anda</h1>
+                        <form id="appointmentForm">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0 shadow-sm" id="gname" placeholder="Nama Lengkap">
+                                        <label for="gname">Nama Lengkap</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control border-0 shadow-sm" id="gmail" placeholder="Alamat Email">
+                                        <label for="gmail">Alamat Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0 shadow-sm" id="cname" placeholder="Nama Panggil">
+                                        <label for="cname">Nama Panggil</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0 shadow-sm" id="cage" placeholder="No Telepon">
+                                        <label for="cage">No Telepon</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0 shadow-sm" placeholder="Pesan" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Pesan</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary d-inline-flex align-items-center py-3 px-4 rounded-pill shadow-lg btn-send" type="button" onclick="sendToWhatsApp()">Kirim <i class="fa fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded" src="img/appointment.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Appointment End -->
+
+<script>
+function sendToWhatsApp() {
+    var name = document.getElementById("gname").value;
+    var email = document.getElementById("gmail").value;
+    var nickname = document.getElementById("cname").value;
+    var phone = document.getElementById("cage").value;
+    var message = document.getElementById("message").value;
+
+    var phoneNumber = "+6282177815570"; // Ganti dengan nomor WhatsApp Anda (gunakan format internasional tanpa "+")
+    
+    var whatsappMessage = "Halo, saya ingin menjadwalkan kunjungan:\n\n" +
+        "Nama Lengkap: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Nama Panggil: " + nickname + "\n" +
+        "No Telepon: " + phone + "\n" +
+        "Pesan: " + message;
+
+    var encodedMessage = encodeURIComponent(whatsappMessage);
+    var whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+
+    window.open(whatsappURL, "_blank");
+}
+</script>
+
+<!-- CSS Tambahan -->
+<style>
+    .form-control {
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .form-floating input:focus, .form-floating textarea:focus {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .btn-send {
+        background-color: #d14f24;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 12px 20px;
+    }
+
+    .btn-send:hover {
+        background-color: #b34200;
+        transform: scale(1.05);
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-send i {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-send:hover i {
+        transform: translateX(6px);
+    }
+
+    .shadow-lg {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+
+        <!-- Appointment End -->
+
+
+       <!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Profil Pengurus</h1>
+            <p>Tim pengurus kami terdiri dari orang-orang yang peduli dan ingin membantu anak-anak yang membutuhkan.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <!-- Anggota Tim 1 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.1s">
+                <div class="team-item">
+                    <img class="img-fluid rounded-circle w-75 mb-3" src="img/team-1.jpg" alt="Ignatius Waruwu">
+                    <h4 class="mb-1">Ignatius Waruwu</h4>
+                    <p class="text-muted">Pendiri Fiber PermataKasih</p>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/praktiswaruwu.praktiswaruwu"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anggota Tim 2 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
+                <div class="team-item">
+                    <img class="img-fluid rounded-circle w-75 mb-3" src="img/team-2.jpg" alt="Warniman Laia">
+                    <h4 class="mb-1">Warniman Laia</h4>
+                    <p class="text-muted">Bendahara</p>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/people/Henrikus-P-S-Waruwu/pfbid02pFUbZyBFcfnCEneqshKpQ3Gk9ZQASfftoy4P9z2C76eo7FKDxV61Dqdd66Ni3pxtl/"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anggota Tim 3 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.5s">
+                <div class="team-item">
+                    <img class="img-fluid rounded-circle w-75 mb-3" src="img/team-3.jpg" alt="Sidorus AS Waruwu">
+                    <h4 class="mb-1">Sidorus AS Waruwu</h4>
+                    <p class="text-muted">Konseling</p>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/King.Sidorus?rdid=2q1S2IZtTay98LuT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15yQHRmMQP%2F#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+<style>
+    .team-item img {
+        transition: transform 0.3s ease;
+    }
+
+    .team-item img:hover {
+        transform: scale(1.05);
+    }
+
+    .btn-square {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+
+
+        <!-- Testimonial Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Suara Donatur Kami!</h1>
+                    <p>Kami ingin membagikan pengalaman dan cerita donatur kami yang telah membantu kami mencapai tujuan kami.</p>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="testimonial-item bg-light rounded p-5">
+                        <p class="fs-5">Saya merasa sangat bangga dapat menjadi bagian dari misi Panti Asuhan Fiber Permata Kasih. Mereka melakukan pekerjaan yang luar biasa dalam membantu anak-anak yang membutuhkan.</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">
+                            <div class="ps-3">
+                                <h3 class="mb-1">Ibu Sry</h3>
+                                <span>Ibu Rumah Tangga</span>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-item bg-light rounded p-5">
+                        <p class="fs-5">Saya sangat terkesan dengan transparansi dan akuntabilitas Panti Asuhan Fiber Permata Kasih. Mereka benar-benar menggunakan donasi saya untuk membantu anak-anak yang membutuhkan.</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">
+                            <div class="ps-3">
+                                <h3 class="mb-1">Bapak Rudi</h3>
+                                <span>Pengusaha</span>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-item bg-light rounded p-5">
+                        <p class="fs-5">Membantu Panti Asuhan Fiber Permata Kasih adalah cara saya untuk memberikan kembali kepada masyarakat. Saya merasa sangat bahagia dapat menjadi bagian dari komunitas yang peduli dengan anak-anak yang membutuhkan.</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">
+                            <div class="ps-3">
+                                <h3 class="mb-1">Dewi</h3>
+                                <span>Dokter</span>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h3 class="text-white mb-4">Hubungi Kami</h3>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jl. Bunga Ester VIII No.9, Padang Bulan Selayang II, Kec. Medan Selayang, Kota Medan, Sumatera Utara 20131</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 821-7781-5570</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>fiberpermatakasih@gmail.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://wa.me/6282177815570"><i class="fab fa-whatsapp"></i></a>                              
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h3 class="text-white mb-4">Hubungi Kami</h3>
+                        <a class="btn btn-link text-white-50" href="">Tentang kami</a>
+                        <a class="btn btn-link text-white-50" href="">Kontak</a>
+                        <a class="btn btn-link text-white-50" href="">Kebijakan Privasi</a>
+                        <a class="btn btn-link text-white-50" href="">Syarat & Ketentuan</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h3 class="text-white mb-4">Gallery Anak-anak</h3>
+                        <div class="row g-2 pt-2">
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-1.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-2.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-3.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-4.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-5.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-6.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-7.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-8.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/classes-9.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h3 class="text-white mb-4">Berita Terkini</h3>
+                        <p>Kami sangat bangga dengan prestasi anak-anak kami. Mereka telah menunjukkan bahwa mereka memiliki potensi dan bakat yang luar biasa," kata Ibu Sri, Kepala Panti Asuhan Fiber Permata Kasih.
+                            - "Kami berharap bahwa prestasi ini dapat menjadi inspirasi bagi anak-anak lain untuk terus berusaha dan mengembangkan bakat mereka," tambahnya.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Masuk</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">FiberPermataKasih</a>, All Right Reserved. 
+							
+							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							Designed By <a class="border-bottom" href="https://htmlcodex.com">Permata Kasih</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="">Beranda</a>
+                                <a href="">Cookies</a>
+                                <a href="">Bantuan</a>
+                                <a href="">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
